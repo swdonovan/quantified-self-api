@@ -15,24 +15,24 @@ ActiveRecord::Schema.define(version: 20170810162954) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "foods", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "calories"
+  create_table "foods", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.integer "calories"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "meal_foods", force: :cascade do |t|
-    t.integer  "meal_id"
-    t.integer  "food_id"
+  create_table "meal_foods", id: :serial, force: :cascade do |t|
+    t.integer "meal_id"
+    t.integer "food_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["food_id"], name: "index_meal_foods_on_food_id", using: :btree
-    t.index ["meal_id"], name: "index_meal_foods_on_meal_id", using: :btree
+    t.index ["food_id"], name: "index_meal_foods_on_food_id"
+    t.index ["meal_id"], name: "index_meal_foods_on_meal_id"
   end
 
-  create_table "meals", force: :cascade do |t|
-    t.string   "name"
+  create_table "meals", id: :serial, force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
