@@ -1,6 +1,6 @@
 class Api::V1::MealsController < ApplicationController
-  before_filter :find_food, except: [:index, :show]
-  before_filter :find_meal, except: [:index]
+  before_action :find_food, except: [:index, :show]
+  before_action :find_meal, except: [:index]
 
   def index
     @meals = Meal.all
